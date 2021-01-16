@@ -129,9 +129,16 @@ $a$是整序变量的极限这一事实，记成:\[\lim x_n =a \text{ 或者 } \
 \rm H.lebesgue' s. 定义$x^*$为区间$[a,b]$中使得区间$[a,x^*]$能用有限个区间$\sigma$来覆盖的点. $x^*$肯定是存在，因为$a$就是，只要找一个包含$a$的开区间$\sigma$就行,这样想的话，又可以找到一群，$\sigma$中接近$a$的都是这样的点.
 
 所以我们的任务是证明$b$也是这样的一个$x^*$.
-因为一切$x^* \leq b$,故亦有\[\sup\{x^*\}=c \leq b.\],这样点$c$,同样可以找到包含它的开区间$\sigma_0=(\alpha,\beta)$.但依据上确界的性质，我们还可以找到$x^*$使得$\alpha < x^* \leq c$.所以现在把$\sigma_0$来在加到有限个区间$\sigma$里面去,现在就可以覆盖区间$[a,c]$，也就是说上确界$c$也是$x^*$.
+因为一切$x^* \leq b$,故亦有\[\sup\{x^*\}=c \leq b.\],因为$c$也是$[a,b]$中一点,同样可以找到包含它的开区间$\sigma_0=(\alpha,\beta)$.但依据上确界的性质，我们还可以找到$x^*$使得$\alpha < x^* \leq c$.所以现在把$\sigma_0$来在加到有限个区间$\sigma$里面去,现在就可以覆盖区间$[a,c]$，也就是说上确界$c$也是$x^*$.
 
 而且$c$是不能小于$b$的，如果$c$小于$b$,如果是这样$c$和$\beta$也可以找到一点$x^*$，这与$c$是上确界矛盾的.这样，必须有$c=b$，即$b$也是属于$x^*$.所以$[a,b]$可以被有限覆盖.
 \end{proof}
+
+%https://blogs.scientificamerican.com/roots-of-unity/what-does-compactness-really-mean
+
+为什么$(a,b)$不是紧致的呢？ 考虑$(a+\frac{b-a}{n},b)$，任何一个$(a,b)$的真子集都可以被它覆盖，但是它不能有限覆盖$(a,b)$，因为如果有限就意味着我们能找到一个最大的开区间属于$(a,b)$，实际上这样的开区间并不存在. 但是如果我们加上$a$和$b$，这种方式已经无法覆盖$a$和$b$两点了.
+
+Compact means small. It is a peculiar kind of small, but at its heart, compactness is a precise way of being small in the mathematical world. The smallness is peculiar because, as in the example of the open and closed intervals $(0,1)$ and $[0,1]$, a set can be made “smaller” (that is, compact) by adding points to it, and it can be made “larger” (non-compact) by taking points away.
+
 
 \end{document}
