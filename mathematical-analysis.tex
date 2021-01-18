@@ -117,6 +117,37 @@ $a$是整序变量的极限这一事实，记成:\[\lim x_n =a \text{ 或者 } \
 
 以$a$点为中心的线段不论取的多小(其长度为$2\varepsilon$),一切$x_n$点从某点起，必全部落在这线段之内,这样在线段之外一定只有有限长度个点了,表示极限的点$a$表示整序变量的数值的点的凝聚中心.
 
+\subsection{区间套}
+
+\begin{lemma}
+给定单调增数列$x_n$和单调减数列$y_n$，且恒有\[x_n < y_n,\]若其差$y_n - x_n$趋向于$0$，则它们有公共有限极限:\[c = \lim x_n  = \lim y_n.\]
+\end{lemma}
+
+常用形式是取一个闭区间$[a,b]$，然后在取一个区间$[a',b']$使得\[a \leq a' < b' \leq b\]，则$[a',b']$是套在$[a,b]$里面的.
+
+设有一区间套的无穷序列\[[a_1,b_1],[a_2,b_2],\cdots,[a_n,b_n],\cdots\]后一个总是套在前面一个内，并且在$n$增大时这些区间的长度趋向于$0$:\[\lim b_n - a_n = 0.\]则区间的两端点$a_n$和$b_n$趋于共同极限\[c = \lim a_n = \lim b_n.\]
+
+\subsection{收敛原理}
+
+\begin{theorem}
+数列变量$x_n$有有限极限的充分必要条件是: 对于每一个数$\varepsilon > 0$，存在序号$N$，使得$n > N$及$n' > N$，不等式\[|x_n - x_{n'}| < \varepsilon\]成立.
+\end{theorem}
+
+记录一下用分割法证明其必要性.
+\begin{proof}
+设前提条件都已经满足，在全体实数域下构造一个划分. 对于任何实数$\alpha$，若$x_n$从某项其满足不等式\[x_n > \alpha,\]则取这种实数$\alpha$归入下组$A$，其余的(即不落在$A$里面的)一起实数归入上组$A'$.
+
+首先我们来说明这样确实产生了一个实数上的划分. 由前提条件，对于任意数$\varepsilon>0$及其对应的$N$. 若$n > N$及$n' > N$，则下面不等式成立\[x_{n'} - \varepsilon < x_n < x_{n'}+\varepsilon\].现在我们可以看到每一个数$x_{n'} - \varepsilon$都是小于$x_n$的，所以它归入下组$A$. 另一方面$x_{n'}+\varepsilon$都大于$x_n$，所以$x_{n'}+\varepsilon$放不进去$A$，那它只能归入$A'$了,所以$A$和$A'$都是非空的. 我们的划分方式对于每一个数$\alpha$和确定序列$x_n$，要么它属于$A$或者属于$A'$. 同时$A$中实数都小于$A'$的实数. 如果$\alpha > \alpha', \alpha \in A , \alpha' \in A'$，则$x_n$从某一项其也都大于$a'$，这样就产生矛盾了. 所以确实产生了一个实数上的划分.
+
+根据戴德金基本定理，有实数$a$存在它是这两组数之间的界数，即\[\alpha \leq a \leq \alpha'.\]我们注意到当$n > N$时，$x_{n'} - \varepsilon$是一个$\alpha$,而$x_{n'} +\varepsilon$是一个$\alpha'$. 所以我们有\[x_{n'} - \varepsilon \leq a < \leq x_{n'} + \varepsilon\].即$|x_{n'}-a| \leq \varepsilon$，所以$\lim x_n = a$.
+\end{proof}
+
+\begin{theorem}
+B.Bolzano-C.Weierstrass. 任何有界数列内恒能选出收敛于有限极限的部分极限.(有界序列一定有收敛子列)
+\end{theorem}
+
+
+
 \newpage
 \section{一元函数}
 \subsection{连续函数的性质}
