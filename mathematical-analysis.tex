@@ -11,6 +11,7 @@
 
 \usepackage{unicode-math}
 
+\usepackage{enumitem}
 
 \usepackage[textwidth=18cm]{geometry} % 设置页宽=18
 
@@ -19,6 +20,7 @@
 \parindent=0pt
 \setlength{\parindent}{2em} 
 \usepackage{indentfirst}
+
 
 
 \usepackage{xcolor}
@@ -185,5 +187,67 @@ B.Bolzano-C.Weierstrass. 任何有界数列内恒能选出收敛于有限极限�
 
 Compact means small. It is a peculiar kind of small, but at its heart, compactness is a precise way of being small in the mathematical world. The smallness is peculiar because, as in the example of the open and closed intervals $(0,1)$ and $[0,1]$, a set can be made “smaller” (that is, compact) by adding points to it, and it can be made “larger” (non-compact) by taking points away.
 
+\newpage
+\subsection{函数连续性在计算极限时的应用}
 
+有三个比较重要的极限.
+
+\begin{enumerate}
+	\item $\lim\limits_{\alpha \rightarrow 0} \frac{\log_a(1+\alpha)}{\alpha} = \log_a e$
+
+直接用对数函数的性质，把$\alpha$放到对数函数里面就行，对数函数里面的极限是$e$.当$a=e$时极限的结果就是很漂亮的$1$.			
+	
+	\item $\lim\limits_{\alpha \rightarrow 0} \frac{a^\alpha-1}{\alpha} = \ln a$
+	
+遇到这样略微有些复杂的表达式，直接考虑换元. 让$\beta = a^\alpha -1$,则$\beta \rightarrow 0$. 原式就变成了$\lim\limits_{\beta \rightarrow 0} \frac{\beta}{\log_a(\beta+1)}$. 变成了上面我们熟悉样子.	
+	
+	\item $\lim\limits_{\alpha \rightarrow 0} \frac{(1+\alpha)^\mu-1}{\alpha} = \mu$
+	
+还是考虑换元，但是不要换的太彻底，适可而止即可. $\beta = (1+\alpha)^\mu - 1$，其中$\beta \rightarrow 0$. 我们可以得到一个有趣的等式$\mu \ln(1+\alpha) = \ln(1+\beta)$. 到这里就够了，不用把$\beta$把$\alpha$表示出来. 我们把原式现在整理如下\[\frac{(1+\alpha)^\mu-1}{\alpha} = \frac{\beta}{\alpha} = \frac{\beta}{\ln(1+\beta)}\cdot\frac{\ln(1+\alpha)}{\alpha}.\]又变成了我们熟悉的样子，两边的极限都是$1$，所以最后的整体的极限为$\mu$.	
+\end{enumerate}
+
+\newpage
+\section{导数及微分}
+
+导数常用的表示法.
+
+\begin{enumerate}
+	\item $\frac{dy}{dx}$或$\frac{df(x_0)}{dx}$ 莱布尼茨(G.W.Leibniz);
+	\item $y'$或者$f'(x_0)$ 拉格朗日(J.L.Lagrange);
+	\item $Dy$或者$Df(x_0)$ 柯西(A.L.Cauchy).
+\end{enumerate}
+
+\subsection{常用导数求法和表示}
+
+\begin{enumerate}
+	\item 常函数的导数等于{ \color{blue} $0$}. 这个就非常trivial了.
+	\item $y=x^n$，其中$n$是自然数. {\color{blue} $y' = nx^{n-1}.$}
+
+$y+\Delta y = (x+\Delta x)^n$这个式子二项式展开即可. 即$x^n + nx^{n-1}\Delta x + \frac{n(n-1)}{1 \cdot 2}x^{n-1}+ \cdots$.	
+	
+	\item $y=\frac{1}{x}$. {\color{blue} $y'=-\frac{1}{x^2}$}. 直接用导数的基本定义就行.
+	\item $y=\sqrt{x}$. {\color{blue} $y' = \frac{1}{2}x^{-\frac{1}{2}}$.} 直接用导数的基本定义就行.
+	\item $y=x^\mu$，其中$\mu$是任意实数. {\color{blue} $y' = \mu x^{\mu - 1}$.}
+	
+$\frac{\Delta y}{\Delta x} =  \frac{(x+\Delta x)^{\mu} - x^\mu}{\Delta x} =  x^{u-1} \cdot  \frac{(x+\frac{\Delta x}{x})^\mu - 1}{\frac{\Delta x}{x}}$. 其中左边极限是我们前面写过的一个重要极限值为$\mu$.	
+	\item $y=a^x$，其中$a >0$. { \color{blue} $y' = a^x \cdot \ln a$.}
+	
+$\frac{\Delta y}{\Delta x} =\frac{a^{x + \Delta x} - a^x}{\Delta x} =  a^x \cdot \frac{a^{\Delta x} - 1}{\Delta x}$. 最后等式做边又是我们熟悉的极限.
+\end{enumerate}
+
+\newpage
+\subsection{高阶导数及高阶微分}
+
+二阶微分记为:\[d^2 y =d(dy).\]二阶微分的微分记为:\[d^3 y = d(d^2 y).\]一般地说，函数$y=f(x)$的$(n-1)$阶微分的微分称为函数$y=f(x)$的$n$阶微分\[d^n y  = d(d^{n-1} y).\]
+
+在求高阶微分时很重要的一件事，{\color{red} 是要记住$dx$是不依赖于$x$的任意的数，关于$x$而微分时必须把它看成常数因子}.在这种情形，将有
+
+\begin{align*}
+	d^2 y = d(dy) = d(y' \cdot dx) = dy' \cdot dx = (y'' \cdot dx) \cdot dx = y'' \cdot dx^2, \\
+	d^3 y = d(d^2 y) = d(y'' \cdot dx^2) =dy'' \cdot dx^2 = (y'''\cdot dx)\cdot dx^2 = y''' \cdot dx^3.
+\end{align*}
+
+很容易可以猜出普遍规律是\[d^n y = y^{(n)} \cdot dx^n.\]由它可以进一步推得\[y^{(n)} = \frac{d^n y}{d x^n}.\]
+
+{\color{blue} 但是高阶微分没有形式不变性}，即若$x = \varphi(t)$，于是$y$可以看成$t$的复合函数$y = f(\varphi(t))$. 它关于$t$的一阶微分可以写成\[dy =y_x' \cdot dx,\]其中$dx = x_t' \cdot dt$. 再求它关于$t$的二阶微分\[d^2 y = d(y_x' \cdot dx) = dy_x' \cdot dx + y_x' \cdot d(dx) = y'' \cdot dx + y_x' \cdot d^2 x.\]这才是二阶微分的一般形式. 之前的高阶微分形式$x$是自变量，所以$d^2 x = 0$.
 \end{document}
