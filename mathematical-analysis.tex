@@ -236,6 +236,38 @@ $\frac{\Delta y}{\Delta x} =\frac{a^{x + \Delta x} - a^x}{\Delta x} =  a^x \cdot
 \end{enumerate}
 
 \newpage
+\subsection{函数的增量公式}
+
+设$y=f(x)$. 在$x$的定义域上固定一个$x_0$，用$\Delta x \lessgtr 0$表示$x$的任意增量. 于是对应的函数的增量为\[\Delta y = \Delta f(x_0) = f(x_0 + \Delta x) - f(x_0).\]
+
+若$y=f(x)$在$x_0$处有有限的导数$y_x'=f'(x_0)$. 则函数的增量可以表示如下的形式.\[\Delta f(x_0) = f'(x_0) \cdot \Delta x + \alpha \cdot \Delta x.\]或者更简短地\[\Delta y = y_x' \cdot \Delta x + \alpha \cdot \Delta x.\]式中的$\alpha$是依赖$\Delta x$的变量，且随着$\Delta x$一同趋于零.
+
+这个$\alpha$是怎么来的呢？在导数的定义中,$\Delta x \rightarrow 0$时,有\[\frac{\Delta y}{\Delta x} \rightarrow y_x'.\]故令\[\alpha = \frac{\Delta y}{\Delta x} - y_x'.\]这里可以看出来$\alpha \rightarrow 0$. 通过这个等式把$\Delta y$表示出来就是前面的等式. 
+
+因为$\alpha \cdot \Delta x$是比$\Delta$更高阶的无穷小.故上面的等式还可以改成写\[ \color{blue} \Delta y = y_x' \cdot \Delta x + o(\Delta x).\]这个式子相对来说就非常简洁了.
+\newpage
+\subsection{复合函数的导数}
+
+设函数$ \mu = \varphi(x)$在某一点$x_0$处有导数$u_x' = \varphi'(x_0)$. 函数$y=f(\mu)$在对应的$\mu_0 = \varphi(x_0)$也有导数$y_u'=f'(u_0)$. 于是复合函数$y = f(\varphi(x))$在$x_0$处亦有导数\[[f(\varphi(x_0))]' =  f_u'(\varphi(x_0))\cdot\varphi'(x_0).\]或者\[\frac{dy}{dx} = \frac{dy}{du}\cdot\frac{du}{dx}.\]
+
+\begin{proof}
+先根据导数的定义来求$\Delta y $. 给$x$以任意增量$\Delta x$，$\Delta u$是函数$u = \varphi(x)$对应增量， 最后$\Delta y$是由增量$\Delta u$所引起的函数$y = f(u)$的增量. 根据函数增量公式我们有\[\Delta y = y_u' \cdot \Delta u + \alpha \cdot \Delta u.\]然后两边都除以$\Delta x$ \[\frac{\Delta y}{\Delta x} = y_u' \cdot \frac{\Delta u}{\Delta x} + \alpha \cdot \frac{\Delta u}{\Delta x}. \]当$\Delta x \rightarrow 0$时，$\frac{\Delta u}{\Delta x}$就是$u_x'$，而$\alpha \cdot \frac{\Delta u}{\Delta x}$是一个趋于$0$高阶无穷小. 所以最后\[\lim\limits_{\Delta \rightarrow 0} \frac{\Delta y}{\Delta x} = y_u' \cdot \lim\limits_{\Delta \rightarrow 0} \frac{\Delta u}{\Delta x} = y_u' \cdot u_x'. \]
+\end{proof}
+
+
+这个式子也是我们常说的链式法则(记得在以前在看mit的微积分的时候，那个代课老师在讲链式法则的时候，突然拿了一条真的链子出来. 说这个法则的强大在于让我们挣脱了链子的束缚...)，可以推广到任意有限个函数复合的情形. 我们可以尝试来推一下二阶链式法则.
+\begin{equation}
+\begin{aligned}
+\left(\frac{dy}{dx}\right)' &= \left( \frac{dy}{du} \right)' \cdot \frac{du}{dx} + \frac{dy}{du} \cdot \left( \frac{du}{dx} \right)' \\
+&= \frac{d^2y}{du^2} \cdot \frac{du}{dx} \cdot \frac{du}{dx} + \frac{dy}{du} \cdot \frac{d^2u}{dx^2} \\
+&= \frac{d^2y}{du^2} \cdot \left( \frac{du}{dx} \right) ^2 + \frac{dy}{du} \cdot \frac{d^2u}{dx^2}
+\end{aligned}
+\end{equation}
+
+
+%\left(\frac{dy}{dx}\right)' = \left( \frac{dy}{du} \right)' \cdot \frac{du}{dx} + \frac{dy}{du} \cdot \left( \frac{du}{dx} \right)' 
+%= \frac{dy}{dx}
+\newpage
 \subsection{高阶导数及高阶微分}
 
 二阶微分记为:\[d^2 y =d(dy).\]二阶微分的微分记为:\[d^3 y = d(d^2 y).\]一般地说，函数$y=f(x)$的$(n-1)$阶微分的微分称为函数$y=f(x)$的$n$阶微分\[d^n y  = d(d^{n-1} y).\]
