@@ -50,8 +50,96 @@
 \maketitle
 \tableofcontents
 
+\newpage
 \section{The Genesis of Fourier Analysis}
 %wave equation
+\section{motivation}
+
+我们来问一个非常基础的问题: 给定$[0,\pi]$上的函数$f$($f(0) = f(\pi)$)，我们能否找到系数$A_m$，使得下面等式成立?
+
+$$
+f(x) = \sum\limits_{m=1}^\infty A_m\sin mx
+$$
+
+刚遇到这个问题，你会发现有点莫名奇妙的意思. 可能会想为什么会问这个问题？其实我现在也不知道... 等学的过程中发现了再告诉你. 回到正题，这个问题是后面学习fourier analysis的比较重要的东西. 我们两边同乘$\sin nx$，然后再积分.
+
+$$
+\begin{aligned}
+\int_0^\pi f(x)\sin nxdx &= \int_0^\pi \left(\sum\limits_{m=1}^\infty A_m \sin mx \right) \sin nx dx \\
+&= \sum\limits_{m=1}^\infty A_m \int_0^\pi \sin mx \sin nx dx = A_n \cdot \frac{\pi}{2}.
+\end{aligned}
+$$
+
+这里用到了一个fact即
+$$
+\int_0^\pi \sin mx \sin nx dx = \left \{
+\begin{array}{lr}
+0  & \text{if} \ m \neq m \\
+\frac{\pi}{2} & \text{if} \ m = n
+\end{array} \right.
+$$
+
+这个fact左边可以写成:
+$$
+\int_0^\pi \frac{\cos (mx-nx) - \cos (mx+nx)}{2}.
+$$
+
+在这里$m,n$都非负，所以只需要考虑$m=n$. $cos(mx+nx)$在$[0,\pi]$上积分为$0$. 因此
+$$
+A_n = \frac{2}{\pi} \int_0^\pi \sin mx \sin nx dx.
+$$
+
+$A_n$表示$n^{th}$ Fourier sine coefficient of $f$. 如果$f$刚好是一个奇函数函数则我们可以把定义域从$[0,\pi]$扩展到更一般地$[-\pi,\pi]$上. 类似我们可能会想如果$[-\pi,\pi]$上一个偶函数$g$，它是否可以表示成$\cos$无穷级数呢？
+
+$$
+g(x) = \sum\limits_{m=0}^{\infty} A_m' \cos mx.
+$$
+
+更一般地，任意的函数$F$在$[-\pi,\pi]$上都可以表示为一个奇函数和一个偶函数的和.
+
+$$
+F(x) = \frac{F(x)-F(-x)}{2} +\frac{F(x)+F(x)}{2}.
+$$
+
+让$f(x) = \frac{F(x)-F(-x)}{2} $和$g(x) = \frac{F(x)+F(x)}{2}$. 这时候我们可能会问$F$能否写成下面的形式.
+
+$$
+F(x) = \sum\limits_{m=1}^\infty A_m\sin mx + \sum\limits_{m=0}^{\infty} A_m' \cos mx.
+$$
+
+这里我们再使用欧拉公式简化一下.
+
+$$
+F(x) = \sum\limits_{m=-\infty}^\infty a_me^{imx}.
+$$
+
+注意这里的负号，这是因为$\sin x = \frac{e^{imx}-e^{-imx}}{2i}$和$\cos x = \frac{e^{imx} + e^{-imx}}{2}$这两个东西在这. 类似地，我可以用前面方法两边同时乘上一个$e^{-inx}$，再积分.
+
+$$
+	\int_{-\pi}^{\pi} F(x)e^{-inx}dx = \int_{-\pi}^{\pi} \left( \sum\limits_{m=-\infty}^\infty a_me^{imx} \right)e^{-inx}dx.
+$$
+
+这里同样可以用一个fact.
+$$
+\frac{1}{2\pi} \int_{-\pi}^{\pi} e^{imx}e^{-inx} dx =\left\{ \begin{array}{lc}
+0 & \text{if}\ n \neq m \\
+1 & \text{if}\ n = m
+\end{array} \right.
+$$
+
+因此我们可以得到$a_n$.
+
+$$
+	a_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} F(x)e^{-inx}dx.
+$$
+
+这个$a_n$就是所谓的第$n$个$F$的傅里叶系数. 所以我们的问题来了: 给定一个$[-\pi,\pi]$上一个reasonable function $F(x)$. 然后用上面方法构造一系列系数，那么下面的等式是否成立呢？
+
+$$
+F(x) = \sum\limits_{-\infty}^{\infty} a_me^{imx}
+$$
+
+Joseph Fourier 是第一个相信“任意”的函数$F$都可以被表示成上述的级数. 也就是说他相信任意的函数都可以表示成$\cos sin mx$和$\cos nx$的线性组合(有可能是无限个). 对此的第一个证明是Dirichlet.
 
 \newpage
 \section{傅里叶级数的基本性质}
@@ -102,6 +190,35 @@ f(x)=\left\{
 虽然这个$f$在$x=\frac{1}{n}$和$0$上并不是连续的，但是这个$f$是黎曼可积. 只要划分足够细，覆盖$\frac{1}{n}$和$0$的子区间就足够小，对应的upper sum和lower sum的差值就越小.
 \end{example}
 
+\subsection{Function on the circle}
 
+有一个周期为$2\pi$的周期函数和定义在单位元上的函数之间非常自然的关系式.
 
+$$
+f(\theta) = F(e^{i\theta}).
+$$
+
+单位圆上的点用$e^{i\theta}$表示. where $\theta$ is a real number
+that is unique up to integer multiples of $2\pi$(这句话我不明白up to是什么意思？ 可能是说$\theta$和$\theta + 2k\pi$是等价呢？)其中$F$是定义在单位元上的函数. 然后用每个$\delta$作为定义域，构造一个函数$f$，可以看出来$f$是$\mathbb{R}$上周期为$2\pi$的周期函数. 因为$f(\theta) = f(\theta + 2\pi).$
+
+它们两者之间会都会保留比较好的性质，例如如果$f$在长度为$2\pi$区间上可积则$F$也同样在单位圆上可积. 连续，可微也是相同.
+
+\subsection{主要的定义}
+开始正式的学习fourier analysis，首先给出fourier series的准确定义. 
+
+\begin{definition}
+\rm 给定$f$在长度为$L$的区间$[a,b]$($L=b-a$)上可积. 则$f$的第$n$项的fourier coefficient定义为
+$$
+	\widehat{f}(n) = \frac{1}{L} \int_{a}^{b} f(x)e^\frac{{-2\pi inx}}{L}dx, \ n \in \mathbb{Z}.
+$$
+
+$f$的fourier series表示为
+$$
+\sum\limits_{n=-\infty}^{\infty} \widehat{f}(n)e^{\frac{2\pi inx}{L}}.
+$$
+\end{definition}
+
+为什么这里的$L$被放到了系数上？相对于把周期放缩到了$L$. 这样做的目的，我其实还不知道为什么？ 难道是为了把$f(x)$作为周期为$L$的周期函数扩展到整个$\mathbb{R}$上? lol
+ 
 \end{document}
+
