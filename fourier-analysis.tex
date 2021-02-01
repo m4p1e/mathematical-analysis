@@ -218,7 +218,70 @@ $$
 $$
 \end{definition}
 
-为什么这里的$L$被放到了系数上？相对于把周期放缩到了$L$. 这样做的目的，我其实还不知道为什么？ 难道是为了把$f(x)$作为周期为$L$的周期函数扩展到整个$\mathbb{R}$上? lol
+为什么这里的$L$被放到了系数上？相对于把周期放缩到了$L$. 这样做的目的，我其实还不知道为什么？ 难道是为了把$f(x)$作为周期为$L$的周期函数扩展到整个$\mathbb{R}$上?
+
+如果$f$在$[-\pi,\pi]$可积，所对应的fourier coefficient可以写的更加简洁.
+
+$$
+	\widehat{f}(n) = a_n = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(\theta)e^{-in\theta}d\theta, \ n \in \mathbb{Z}.
+$$
+
+完整的fourier series为.
+
+$$
+f(\theta) \sim \sum\limits_{n=-\infty}^{\infty} a_n e^{in\theta}.
+$$
+
+\subsection{Convergence of Fourier Series}
+ 
+fourier series 属于三角级数的一种. 如果三角级数只有有限多项，则称为一个三角多项式，其最高次项$n$的为其系数(dergee). $\sum\limits_{-\infty}^{\infty} c_n e^{\frac{2\pi inx}{L}}$是一个标准的fourier series，有限多项就是指当$n > |k|$时$c_n = 0$，这个$|k|$就表示当前的三角多项式的系数.
+ 
+ 
+\begin{definition}
+\rm fourier series的部分和(partial sum)表示为.
+$$
+S_N(f)(x) = \sum\limits_{n=-N}^{N} \widehat{f}(n) e^{\frac{2\pi inx}{L}}.
+$$
+其中$N$是一个正整数.
+\end{definition}
+
+\begin{example}
+\rm 狄利克雷核 $N^{th}$ Dirichlet kernel. $x \in [-\pi,\pi].$
+
+$$
+D_N(x) = \sum\limits_{-N}^{N} e^{inx}.
+$$ 
+
+注意这里的fourier coefficient $a_n = 1$ if $n \leq N$ and $a_n = 0$ otherwise. 可以推出更简洁的式子，定义$\omega = e^{ix}$. $D_N(x)$可以分解成两个partial sum.
+$$
+	\sum\limits_{0}^{N} \omega^n\ \text{and}\ \sum\limits_{-N}^{-1} \omega^n 
+$$
+分别计算这个部分可以得到
+$$
+	\frac{1-\omega^{N+1}}{1-\omega}\ \text{and}\ \frac{\omega^{-N}-1}{1-\omega}
+$$
+它们的和为
+$$
+\frac{\omega^{-N}-\omega^{N+1}}{1-\omega} =  \frac{\omega^{-N-\frac12}-\omega^{N+\frac12}}{\omega^{-\frac12}-\omega^{\frac12}} = \frac{\sin((N+\frac12)x)}{\sin(\frac12x)}.
+$$
+\end{example}
+
+\begin{example}
+\rm 泊松核 Poisson kernel. $\theta \in [-\pi,\pi]\ \text{and}\ 0 \leq r \leq 1.$
+$$
+P_r(\theta) = \sum\limits_{-\infty}^{\infty} r^{|n|}e^{inx}.
+$$
+\end{example}
+
+好吧关于fourier series收敛的主题没有那么简单，至少在这里还没什么可记录的...
+
+\subsection{Uniqueness of Fourier series}
+假设fourier series在某种合适的sense下收敛，现在再问一个问题，一个函数是否可以被其对应的fourier series唯一确定呢？也就是现在$f$和$g$有相同的fourier series，那么$f$和$g$是不是相同的呢？这个问题有可以转换为如果$\widehat{f}(n)=0$对所有的$n \in \mathbb{Z}$成立，则$f=0$. 这个命题不能直接下结论，因为如果两个函数只在有限多个不同点上函数值不一样，则它们的黎曼积分还是一样的，所以算出来的fourier coefficient都是对应都是一样的. 也就是如果两个只有有限多个点上函数值不同的函数，它们的fourier series是相同的. 当然了也有一些非常positive result.
+
+\begin{theorem}
+Suppose that $f$ is an integrable function on the circle with
+$fˆ(n)=0$ for all $n \in \mathbb{Z}$. Then $f(θ_0)= 0$ whenever $f$ is continuous at the point $θ_0$.
+\end{theorem}
  
 \end{document}
-
+%http://math.uchicago.edu/~may/REU2017/REUPapers/Xue.pdf
