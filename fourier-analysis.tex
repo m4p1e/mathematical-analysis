@@ -282,6 +282,60 @@ $$
 Suppose that $f$ is an integrable function on the circle with
 $fˆ(n)=0$ for all $n \in \mathbb{Z}$. Then $f(θ_0)= 0$ whenever $f$ is continuous at the point $θ_0$.
 \end{theorem}
- 
+
+\begin{proof}
+%https://math.stackexchange.com/questions/2276333/fourier-coefficients-zero-implies-integral-with-trigonometric-polynomial-zero 终于等到你 但是不是你	
+%https://math.stackexchange.com/questions/724072/uniqueness-of-fourier-coefficients
+%https://math.stackexchange.com/questions/2178667/the-idea-of-the-proof-of-theorem-2-1-in-stein-and-shakarchi-fourier-analysis-bo
+%https://math.stackexchange.com/questions/1670464/difficulty-in-understanding-a-part-in-a-proof-from-stein-and-shakarchi-fourier-a
+这个证明可能需要花一点点时间取感受. 假设在满足上述前提下$f(\theta) \neq 0$. 不妨设(without loss of generality)设$\theta = 0$，$f(\theta) > 0$. 接下来的策略就是构造一系列波峰在$\theta=0$处的三角多项式$\{p_k\}$，使得当$k \rightarrow \infty$时$\int p_k(\theta)f(\theta)d\theta \rightarrow \infty.$. 这将会和我们的前提条件矛盾，为什么矛盾后面再说.
+
+直接给定$p(\theta)$吧.
+$$
+	p(\theta) = \epsilon + \cos \theta.
+$$
+自然地，对应的$p_k(\theta)$为
+$$
+	p_k(\theta) = (\epsilon + \cos \theta)^k.
+$$
+三角级数就是$\cos$和$\sin$的线性组合再加上一个常数. 这一点要理解!我们要使得$p(\theta)$在$\theta=0$时大于$1$才行，这样在$k \rightarrow \infty$时，$p_k(\theta)$才能趋于$\infty$.
+
+$f$在$\theta=0$处连续，我们可以找到一个$0 < \delta \leq \frac{\pi}{2}$，使得当$|\theta| < \delta$时，$f(\theta) > \frac{f(0)}{2}$. in fact.
+$$
+  |f(0)-f(\delta)| < f(\delta) 
+$$
+这是根据$\varepsilon-\delta$连续的定义让$\varepsilon = f(\delta)$. 然后把$p(\theta)$中的$\epsilon$取的足够小，多小呢？让$\delta \leq |\theta| \leq \pi$时$|p(\theta)| \leq |1-\frac{\epsilon}{2}|$. in fact.
+$$
+\begin{aligned}
+|\epsilon + \cos \theta| < 1-\frac{\epsilon}{2} \\
+-\frac{\epsilon}{2} - 1<\cos \theta < 1 - \frac{3\epsilon}{2}
+\end{aligned}
+$$
+因为$\delta > 0$，则$\cos \delta < 1$. 所以这样的$\epsilon <\frac23 (1-\cos \delta)$是可以取到的. 搞了半天取了一个$p(\theta)<0$，不急接着来. 我们可以再取一个正数$\eta < \delta$，可以使得当$|\theta| < \eta$时$p(\theta) \geq 1 + \frac{\epsilon}{2}$. in fact.
+$$
+\cos \theta \geq 1 - \frac{\epsilon}{2}.
+$$
+前面我们有了在$|\theta| > 0$时，$\cos \theta < 1 - \frac{3}{2}$. 现在这个$\varepsilon$是fixed. 所以$1-\frac{\epsilon}{2}$也是fixed. 只要让$\eta$尽可能的靠近$0$，这也是也是可以让上面的式子成立的.
+
+所以前置工作都完成了，最终我们找到了一个正整数$\eta$，现在当$|\theta| < \eta$时，我们都有$p(\theta)>0$. 对应的$k \rightarrow \infty$时，有$p_k(\theta) \rightarrow \infty.$再因为$f$可积，则$f$有界，即对应任意的$\theta$有$|f(\theta)|\leq B$.现在我们下面的不等式成立
+$$
+\int_{|\theta| < \eta} f(\theta)p_k(\theta)d\theta \geq 2\eta\frac{f(0)}{2}(1+\frac{\epsilon}{2})^k.
+$$
+这里我们可能终于明白最前面$\delta$为什么要取得使$f(\theta) > \frac{f(0)}{2}$，因为$\theta=0$处连续，可以取到周围也有一部分函数值大于$0$的点. 前提条件是$\widehat{f}=0$，所以这里必须有$\int_{|\theta| < \eta} f(\theta)p_k(\theta)d\theta = 0$，这是为什么呢？它看起来并不像fourier coefficient的表示形式啊？in fact. 我们来看看$p(\theta)$.
+$$
+\int_{-\pi}^\pi f(\theta)p_1(\theta) d\theta = \epsilon\int_{-\pi}^\pi f(\theta) d\theta + \int_{-\pi}^\pi f(\theta)\cos(\theta) d\theta .
+$$
+RHS的第一个积分其实就是$\epsilon \widehat{f}(0)$即($\int_{-\pi}^\pi f(\theta)e^{in\cdot0} d\theta$)，所以第一个积分值等于$0$. 第二个积分需要变换一下
+$$
+\int_{-\pi}^\pi f(\theta)\cos\theta d\theta = \int_{-\pi}^\pi \text{Re}(f(\theta)e^{i\theta} )d\theta = \text{Re}\left(\int_{-\pi}^\pi f(\theta)e^{i\theta} d\theta\right) = \text{Re}\hat{f}(1) = 0.
+$$
+
+
+
+
+
+
+
+\end{proof}
 \end{document}
 %http://math.uchicago.edu/~may/REU2017/REUPapers/Xue.pdf
