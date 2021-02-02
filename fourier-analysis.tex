@@ -315,9 +315,9 @@ $$
 $$
 \cos \theta \geq 1 - \frac{\epsilon}{2}.
 $$
-前面我们有了在$|\theta| > 0$时，$\cos \theta < 1 - \frac{3}{2}$. 现在这个$\varepsilon$是fixed. 所以$1-\frac{\epsilon}{2}$也是fixed. 只要让$\eta$尽可能的靠近$0$，这也是也是可以让上面的式子成立的.
+前面我们有了在$|\theta| > 0$时，$\cos \theta < 1 - \frac{3}{2}$. 现在这个$\varepsilon$是fixed. 所以$1-\frac{\epsilon}{2}$也是fixed. 只要让$\eta$尽可能的靠近$0$，这也是可以让上面的式子成立的.
 
-所以前置工作都完成了，最终我们找到了一个正整数$\eta$，现在当$|\theta| < \eta$时，我们都有$p(\theta)>0$. 对应的$k \rightarrow \infty$时，有$p_k(\theta) \rightarrow \infty.$再因为$f$可积，则$f$有界，即对应任意的$\theta$有$|f(\theta)|\leq B$.现在我们下面的不等式成立
+所以前置工作都完成了，最终我们找到了一个正整数$\eta$，现在当$|\theta| < \eta$时，我们都有$p(\theta)>0$. 对应的$k \rightarrow \infty$时，有$p_k(\theta) \rightarrow \infty.$现在我们下面的不等式成立
 $$
 \int_{|\theta| < \eta} f(\theta)p_k(\theta)d\theta \geq 2\eta\frac{f(0)}{2}(1+\frac{\epsilon}{2})^k.
 $$
@@ -325,11 +325,15 @@ $$
 $$
 \int_{-\pi}^\pi f(\theta)p_1(\theta) d\theta = \epsilon\int_{-\pi}^\pi f(\theta) d\theta + \int_{-\pi}^\pi f(\theta)\cos(\theta) d\theta .
 $$
-RHS的第一个积分其实就是$\epsilon \widehat{f}(0)$即($\int_{-\pi}^\pi f(\theta)e^{in\cdot0} d\theta$)，所以第一个积分值等于$0$. 第二个积分需要变换一下
+RHS的第一个积分其实就是$\epsilon \widehat{f}(0)$即($\int_{-\pi}^\pi f(\theta)e^{i0\theta} d\theta$)，所以第一个积分值等于$0$. 第二个积分需要变换一下
 $$
 \int_{-\pi}^\pi f(\theta)\cos\theta d\theta = \int_{-\pi}^\pi \text{Re}(f(\theta)e^{i\theta} )d\theta = \text{Re}\left(\int_{-\pi}^\pi f(\theta)e^{i\theta} d\theta\right) = \text{Re}\hat{f}(1) = 0.
 $$
-
+其实也可以下面这样变
+$$
+\int_{-\pi}^\pi f(\theta)\cos\theta d\theta = \int_{-\pi}^\pi f(\theta)(\frac{e^{i\theta}+e^{-i\theta}}{2})d\theta = \widehat{f}(1) + \widehat{f}(-1) = 0.
+$$
+同理$p_k(\delta)$展开之后都可以被消被0. 
 
 
 
