@@ -315,7 +315,7 @@ $$
 $$
 \cos \theta \geq 1 - \frac{\epsilon}{2}.
 $$
-前面我们有了在$|\theta| > 0$时，$\cos \theta < 1 - \frac{3}{2}$. 现在这个$\varepsilon$是fixed. 所以$1-\frac{\epsilon}{2}$也是fixed. 只要让$\eta$尽可能的靠近$0$，这也是可以让上面的式子成立的.
+前面我们有了在$|\theta| > 0$时，$\cos \theta < 1 - \frac{3}{2}$. 现在这个$\varepsilon$是fixed. 所以$1-\frac{\epsilon}{2}$也是fixed. 只要让$\eta$尽可能的靠近$0$，这也是可以让上面的式子成立的. 注意这里我们是不能直接取$p(\theta) > 1 + \epsilon$的，因为根据$p(\theta)$的定义这是取不到的.
 
 所以前置工作都完成了，最终我们找到了一个正整数$\eta$，现在当$|\theta| < \eta$时，我们都有$p(\theta)>0$. 对应的$k \rightarrow \infty$时，有$p_k(\theta) \rightarrow \infty.$现在我们下面的不等式成立
 $$
@@ -333,11 +333,29 @@ $$
 $$
 \int_{-\pi}^\pi f(\theta)\cos\theta d\theta = \int_{-\pi}^\pi f(\theta)(\frac{e^{i\theta}+e^{-i\theta}}{2})d\theta = \widehat{f}(1) + \widehat{f}(-1) = 0.
 $$
-同理$p_k(\delta)$展开之后都可以被消被0. 
+同理$p_k(\delta)$展开之后都可以被消成0. 
 
-
-
-
+如果$f$是一个complex valued函数，即$f(\theta)=u(\theta)+iv(\theta)$，其中$u$和$v$是real valued函数. 这个时候它还是不是在满足上述条件下$f=0$？定义$f$的共轭形式$\bar{f}(\theta) = \overline{f(\theta)}.$ $u(\theta)$和$v(\theta)$就可以分别用它和原函数来表示
+$$
+\begin{aligned}
+u(\theta) = \frac{f(\theta)+\overline{f(\theta)}}{2} \\
+v(\theta) = \frac{f(\theta)-\overline{f(\theta)}}{2i}
+\end{aligned}
+$$
+$f$可积则$\bar{f}$也是可积的. 然后我们看看$\overline{f(\theta)}$的fourier coefficient.
+\begin{align}
+\hat{\overline{f}}(n) &= \frac{1}{2\pi} \int_0^{2\pi} \overline{f}(\theta) e^{-in\theta} \,d\theta\\
+&= \overline{\frac{1}{2\pi} \int_0^{2\pi} f(\theta) e^{-i(-n)\theta} \,d\theta}\\
+&=\overline{\hat{f}(-n)}
+\end{align}
+注意第二部的变换，你可以直接把$f$和$e^{-i(-n)\theta}$都展开来验证.对应的我们有
+$$
+\begin{aligned}
+\hat{u}(n) = \frac{\hat{f}(n)+\overline{\hat{f}(-n)}}{2} \\
+\hat{v}(n) = \frac{\hat{f}(n)-\overline{\hat{f}(-n)}}{2i}
+\end{aligned}
+$$
+其中$\frac{\hat{f}(n) = \overline{\hat{f}(-n)}}{2} = 0$，所以$\hat{u}(n) = \hat{v}(n) = 0$对任意的$n$都成立. 现在就转化成了两个real value函数的fourier coefficient的系数是$0$的情况，根据前面我们已经证明过的real value函数的case，再用一遍就行.
 
 
 \end{proof}
