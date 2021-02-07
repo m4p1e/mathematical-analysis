@@ -108,6 +108,7 @@
 若数集$\mathcal{X}$有一个上界$M$，则$\sup{x} \leq M$.
 \end{corollary}
 
+
 \newpage
 \section{极限论}
 \subsection{数列极限}
@@ -242,8 +243,23 @@ B.Bolzano-C.Weierstrass. 任何有界数列内恒能选出收敛于有限极限�
 
 \newpage
 \section{一元函数}
-\subsection{连续函数的性质}
+\subsection{单调函数的极限}
 
+\begin{definition}
+单调函数分为广义的单调函数和严格的单调函数. 例如当$x > x'$有$f(x) \geq f(x')$就是广义单调增函数，也叫不减函数(菲砖). 与之对应的严格单调增函数就需要把前面这个不等式的等号去掉.
+\end{definition}
+
+
+\begin{theorem}
+设$f(x)$在区域$\mathcal{X}$内单调增加，即使是广义的也可以. 区域$X$以大于一切$x$的数$a$(它可以是有限的，也可以是$-\infty$)作为聚点. 若在这时$f(x)$上有界:
+$$
+	f(x) \leq M , \forall x \in \mathcal{X}.
+$$
+则当$x \rightarrow a$时函数有一有限的极限. 在与此相反的场合，它趋向于$+\infty$.
+\end{theorem}
+
+\newpage
+\subsection{连续函数的性质}
 \begin{lemma}
 \rm E.Borel. 若闭区间$[a,b]$被一个开区间的无穷系$\sum = \{\sigma\}$所覆盖，则恒能从$\sum$里面选出有限子系\[\sum^{*} = {\sigma_1,\sigma_2,\cdots,\sigma_n},\]它同样可以覆盖全区间$[a,b]$.
 \end{lemma}
@@ -287,6 +303,7 @@ $$
 若$x_0$是一个有理数，则$x_0$是一个普通间断点. 反之若$x_0$是一个有理数则在$x_0$处连续.
 \end{example}
 
+\newpage
 \subsection{单调函数的连续性和间断}
 
 \begin{theorem}
