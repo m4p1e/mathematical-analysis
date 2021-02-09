@@ -326,6 +326,35 @@ $$
 设$x$也不是右端点，那么右极限当$x > x_0$， 有$f(x) \geq f(x_0)$. 也有极限$\lim\limits_{x \rightarrow x_0 + 0} \geq f(x_0)$. 如果左右极限都等于$f(x_0)$则$f(x)$在这点连续.
 \end{proof}
 
+
+\begin{theorem}
+\rm 若单调函数$f(x)$在区间$\mathcal{X}$上对应的函数值充满整个区间$\mathcal{Y}$(任意$y \in \mathcal{Y}$都至少有一个$f(x_0)$与之对应)，则$f(x)$在$\mathcal{X}$上连续.
+\end{theorem}
+
+\begin{proof}
+假设$f(x)$在$\mathbf{X}$上存在一间断点$x_0$，我们知道这样的间断点只能是第一间断点. 即在$x_0$这一点两边都有极限但是不等于$f(x_0)$. 在这种情况下我们需要找到一点$y_0 \in \mathcal{Y}$它并不能被$f(x)$覆盖从而推出矛盾. 当$x < x_0$时有$f(x)< f(x_0)$. 这里我们就找出了这样$y$属于$f(x) < y < f(x_0)$.
+\end{proof}
+
+这个定理非常的有用，它可以很简单直接来描述一些单调初等函数的连续性，而不需要用定义来刻画.
+
+\newpage
+\subsection{连续函数的复合}
+
+\newpage
+\subsection{一个有趣的方程的解}
+
+\begin{example}
+求定义在区间$(-\infty,+\infty)$上满足
+$$
+f(x+y) = f(x) + f(y)
+$$
+的一切连续函数$f(x)$.
+\end{example}
+
+\begin{proof}
+这个函数只能是$f(x)=cx$.
+\end{proof}
+
 \newpage
 \subsection{函数连续性在计算极限时的应用}
 
@@ -344,6 +373,37 @@ $$
 	
 还是考虑换元，但是不要换的太彻底，适可而止即可. $\beta = (1+\alpha)^\mu - 1$，其中$\beta \rightarrow 0$. 我们可以得到一个有趣的等式$\mu \ln(1+\alpha) = \ln(1+\beta)$. 到这里就够了，不用把$\beta$把$\alpha$表示出来. 我们把原式现在整理如下\[\frac{(1+\alpha)^\mu-1}{\alpha} = \frac{\beta}{\alpha} = \frac{\beta}{\ln(1+\beta)}\cdot\frac{\ln(1+\alpha)}{\alpha}.\]又变成了我们熟悉的样子，两边的极限都是$1$，所以最后的整体的极限为$\mu$.	
 \end{enumerate}
+
+\newpage
+\subsection{连续函数的性质}
+
+零点定理或者Bolzano-Cauchy第一定理.
+\begin{theorem}
+函数$f(x)$在闭区间$[a,b]$上连续，且$f(a) \cdot f(b) < 0$即两端函数值异号. 则存在一点$c$使得$f(c)=0$.
+\end{theorem}
+
+\begin{proof}
+在这里可以用上区间套，取$c =\frac{a+b}{2}$，如果$f(c)$正好等于$c$那就太好了，我们一下子就找到了它. 如果$f(c)$并不等于$0$，那么$[a,\frac{a+b}{2}]$和$[\frac{a+b}{2},b]$必有一个区间两端异号，我们再取这个区间的中间值. by induction, 我们只需要研究最差的情况有$\lim\limits_{n \rightarrow \infty}(b_n - a_n)=0$，则存在极限$\lim a_n = \lim b_n = c$. 再根据我们的取法还有$f(a_n) < 0$和$f(b_n) > 0$. 因为$f(x)$在$[a,b]$上连续，所以$f(x)$在$c$点是有极限存在的，并且左右极限是相等的，那么只能$\lim f(c) = 0$.
+\end{proof} 
+
+上面定理其实还有一种证法，但是需要给出一个小lemma. 也就是连续保号的性质.
+
+\begin{lemma}
+若函数$f(x)$在$x=x_0$处连续，且$f(x_0)$不等于$0$，则对于充分接近$x_0$的一切$x$的函数值$f(x)$仍保持着在$f(x_0)$的函数值.
+\end{lemma}
+
+\begin{proof}
+根据连续的定义，任意的$\varepsilon > 0$， 存在$|x-x_0| < \delta$使得$|f(x)-f(x_0)| < \varepsilon$成立. 若$f(x_0)>0$，我们把这个不等式左边的绝对值拿到我们有$f(x) > f(x_0) - \varepsilon$，只要我们让这个$\varepsilon$取的足够小，就能使得$f(x_0) - \varepsilon > 0$. 即$\varepsilon < f(x_0)$就行. 反之若$f(x_0) < 0$，有$f(x) < f(x_0) + \varepsilon$，同样只要这个$\varepsilon$取的足够小，可以使得$f(x_0) + \varepsilon < 0$. 即$\varepsilon < -f(x_0)$.
+\end{proof}
+
+利用这个lemma再给出一种证明，这个证明也是我中意的.
+
+\begin{proof}
+\rm 现在我们从任意一个端点出发，例如我选点$a$. 先假设没有这样的点$c$存在使得$f(c)=0$. 并设$f(a) < 0$，我们可以选一个特殊的区间出来$[a,d]$， 有上面这个lemma我们可以让这个区间里面所有的$x$都有$f(x)<0$，那么这个$d$最大可以取到哪里呢？肯定存在一个最大值，因为$f(b)>0$，所以一定有$d < b$. 我们现在考虑在这种情况下，充分接近$d$右边的$x$一定都有$f(x) > 0$，如果不是这样我们可以取更大的$d$. 那么在$d$点这里，有$\lim\limits_{x \rightarrow d-0} < 0$和$\lim\limits_{x \rightarrow d+0} > 0$，这表示在这$d$这一点并不连续，与假设矛盾.
+
+上面是我们子集的论证过程，其实有点模糊，再记录一下更正规的论证方式. 还是设$f(a)<0$，我们可以取出所有$f(\bar{x}) < 0$这样的$x$. 因为$f(b) > 0$，所以$\{\bar{x}\}$上有界，我们取$c = \sup\{\bar{x}\}$. 我们来探讨一下$f(c)$的大小，若是$f(c) < 0$，根据前面的lemma在充分接近$c$的右边也存在$x$使得$f(x)<0$，这就和$c$是上确界矛盾了. 同样$f(c) >0$，我们也可以在$c$的左边找到$f(x)>0$，这也和$c$是上确界矛盾.
+\end{proof}
+
 
 \newpage
 \section{导数及微分}
