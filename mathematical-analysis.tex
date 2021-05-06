@@ -44,6 +44,9 @@
 \newcommand\Set[2]{\{\,#1\mid#2\,\}} %集合
 \newcommand\SET[2]{\Set{#1}{\text{#2}}} %
 
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % 范数
+\newcommand{\vect}[1]{\mathbf{#1}} % vector
+
 \begin{document}
 \title{Mathematical Analysis}
 \author{枫聆}
@@ -94,14 +97,14 @@
 \subsection{数集的界}
 
 \begin{theorem}
-若数集$\mathcal{X}=\{x\}$上(下)有界，则它必有上(下)确界.
+\rm 若实数集$\mathcal{X}=\{x\}$上(下)有界，则它必有上(下)确界.
 \end{theorem}
 
 \begin{proof}
 我们分两种情况来看待这个问题.
 如果$\mathcal{X}$存在一个最大数$\bar{x}$，对一切$x \in \mathcal{X}$都有$x \leq \bar{x}$. 这个时候$\bar{x}$是$\mathcal{X}$是一个上界同时也是上确界.
 
-如果$\mathcal{X}$中不存在这样的最大数，那么我们取$\mathcal{X}$的所有上界$\alpha'$构成归入上组$\textbf{A}'$. 一切其他的实数归入下组$\textbf{A}$. 我们知道$\mathcal{X}$是都会落在下组$\textbf{A}$中的，因为对于任意的$x \in \mathcal{X}$，在当前前提下它都不可能是一个上界. 所以现在$\textbf{A}$和$\textbf{A}'$都是非空的. 那么现在实际上弄了实数上的一个划分出来，根据戴德金定理我们知道这样划分会产生一个界数$\beta$，无论这个界数落在$\mathcal{A}$或者$\mathcal{B}$里面也好，都可以用它作为这个独特的上确界，因为一切上界都大于等于它. 
+如果$\mathcal{X}$中不存在这样的最大数，那么我们取$\mathcal{X}$的所有上界$\alpha'$构成归入上组$\textbf{A}'$. 一切其他的实数归入下组$\textbf{A}$. 我们知道$\mathcal{X}$是都会落在下组$\textbf{A}$中的，因为对于任意的$x \in \mathcal{X}$，在当前前提下它都不可能是一个上界. 所以现在$\textbf{A}$和$\textbf{A}'$都是非空的. 那么现在实际上弄了实数上的一个划分出来，根据戴德金定理我们知道这样划分会产生一个界数$\beta$，无论这个界数落在$\textbf{A}$或者$\textbf{A'}$里面也好，都可以用它作为这个独特的上确界，因为它确实是$\mathcal{X}$的一个上界且一切上界都大于等于它. {\color{blue} 注意我们这里并不需要这个确界在$\mathcal{X}$里面}. 
 \end{proof}
 
 这里有一个小推论,clearly.
@@ -110,6 +113,62 @@
 若数集$\mathcal{X}$有一个上界$M$，则$\sup{x} \leq M$.
 \end{corollary}
 
+\newpage
+\subsection{欧几里得空间}
+
+\begin{definition}
+\rm 对任意的实数$k$，让$\mathbb{R}^k$表示所有$k$元有序对
+$$
+\mathbf{x} = (x_1,x_2,\cdots,x_k)
+$$
+构成的集合，其中$x_1,\cdots,x_k$均为实数. $\mathbf{x}$被称为点(point)或者向量(vector).
+\end{definition}
+
+\begin{definition}
+\rm 给定另外一个向量$\mathbf{y} = (y_1,\cdots,y_k)$和实数$\alpha$，定义向量加法和数量乘法如下
+\begin{align}
+\mathbf{x} +\mathbf{y} &= (x_1 + y_1 , \cdots,  x_k + y_k) \\
+\alpha \mathcal{x} &= (\alpha x_1, \cdots, \alpha x_k).
+\end{align}
+如果还熟悉向量空间定义的话，其实这就是一个vector space over $\mathbb{R}$. 所以上述两个操作是满足交换律，结合律和分配律的.
+\end{definition}
+
+\begin{definition}
+\rm 定义两个向量的{\color{red}内积(inner product)}如下
+$$
+\mathbf{x} \cdot \mathbf{y} = \sum\limits_{i=1}^{k}x_i y_i.
+$$
+\end{definition}
+
+\begin{definition}
+\rm 定义$\mathbf{x}$的 {\color{red} 范数(norm)}如下
+$$
+|\mathbf{x}| = (\mathbf{x} \cdot \mathbf{x})^{\frac12} = \left(\sum\limits_{i=1}^{k}x_i^2\right)^{\frac12}.
+$$
+\end{definition}
+
+\begin{theorem}
+\rm 给定$\mathbf{x},\mathbf{y},\mathbf{z} \in \mathbb{R}^k$和$\alpha \in \mathbb{R}$，则有下面所有命题成立
+\begin{enumerate}
+	\item $|\vect{x}| \geq 0$;
+	\item $|\vect{x}| = 0$当且仅当$\vect{x} = \vect{0}$;
+	\item $|\alpha \vect{x}| = |\vect{x}| \alpha |\vect{x}|$;
+	\item $|\vect{x} \cdot \vect{y}| = \vect \cdot \vect{y}$;
+	\item $|\vect{x} + \vect{y}| \leq |\vect{x}| + |\vect{y}|$;
+	\item $|\vect{x} - \vect{z}| \leq |\vect{x} - \vect{y}| + |\vect{y} - \vect{z}|$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1)-(3)是比较trivial的，(4)需要你两边平方算一下也是简单的. 我们来计算一下(5)，同样先平方
+\begin{align}
+|\vect{x} + \vect{y}|^2 &= (\vect{x} + \vect{y})\cdot(\vect{x} + \vect{y}) \\
+&= \vect{x} \cdot \vect{x} + 2 \vect{x}\cdot\vect{y} + \vect{y}\vect{y}. \\
+&\leq |\vect{x}|^2 + 2 |\vect{x}||\vect{y}| + |\vect{y}|^2 \\
+&= (|\vect{x}| + |\vect{y}|)^2 
+\end{align}
+等式3-4步骤用到比(4)更强的结论即$\vect{x} \cdot \vect{y} \leq |\vect{x}||\vect{y}|$，要证明它还是得两边先平方，然后把LHS拿到右边去凑平方. 要证明(6)只需要分别把(5)里面的$\vect{x}$换成$\vect{x} - \vect{y}$和$\vect{y}$换成$\vect{y} - \vect{z}$即可，{\color{red} (6)就是度量空间里面的三角不等式}.
+\end{proof}
 
 \newpage
 \section{极限论}
