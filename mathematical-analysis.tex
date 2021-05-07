@@ -542,4 +542,20 @@ $\frac{\Delta y}{\Delta x} =\frac{a^{x + \Delta x} - a^x}{\Delta x} =  a^x \cdot
 很容易可以猜出普遍规律是\[d^n y = y^{(n)} \cdot dx^n.\]由它可以进一步推得\[y^{(n)} = \frac{d^n y}{d x^n}.\]
 
 {\color{blue} 但是高阶微分没有形式不变性}，即若$x = \varphi(t)$，于是$y$可以看成$t$的复合函数$y = f(\varphi(t))$. 它关于$t$的一阶微分可以写成\[dy =y_x' \cdot dx,\]其中$dx = x_t' \cdot dt$. 再求它关于$t$的二阶微分\[d^2 y = d(y_x' \cdot dx) = dy_x' \cdot dx + y_x' \cdot d(dx) = y'' \cdot dx + y_x' \cdot d^2 x.\]这才是二阶微分的一般形式. 之前的高阶微分形式$x$是自变量，所以$d^2 x = 0$.
+
+\newpage
+\section{多元函数}
+
+\subsection{多元函数的复合}
+\begin{definition}
+\rm 给定某多元函数$u = f(x_1,x_2,\cdots,x_n)$，现在假定在$m$维空间的某一点集$\mathcal{P}$内给定$m$个变量$t_1,t_2,\cdots,t_m$的$n$个函数
+$$
+x_1 = \varphi_1(t_1,t_2,\cdots,t_m),\cdots,x_n = \varphi_n(t_1,t_2,\cdots).
+$$
+若假定点$(t_1,\cdots,t_m)$在$\mathcal{P}$范围内变动时，与之对应的$(x_1,\cdots,x_n)$总是不越出$u = f(x_1,x_2,\cdots,x_n)$的定义域. 那么$u$就可以看做以$t_1, \cdots,t_m$为自变量的复合函数
+$$
+u = f(\varphi_1(t_1,\cdots,t_m),\cdots,\varphi_n(t_1,\cdots,t_m)).
+$$
+要注意这里$m$和$n$是不一样的.
+\end{definition}
 \end{document}
