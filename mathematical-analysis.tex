@@ -562,14 +562,33 @@ $$
 \newpage
 \subsection{多元函数的极限} 
 \begin{definition}
-\rm 假定函数$f(x_1,\cdots,x_n)$是在具有聚点$M_0(a_1,\cdots,a_n)$的某一点集$\mathcal{M}$内定义的. 若对于任意一数$\varepsilon > 0$都能找到一个$\delta > 0$，只要
+\rm 假定函数$f(x_1,\cdots,x_n)$是在具有聚点$M_0(a_1,\cdots,a_n)$的某一点集$\mathcal{M}$内定义着. 若对于任意一数$\varepsilon > 0$都能找到一个$\delta > 0$，只要
 $$
 |x_1 - a_1| < \delta, \cdots , |x_n - a_n| < \delta,
 $$
 就能使得
 $$
-f(x_1,\cdots,x_n) < \varepsilon.
+|f(x_1,\cdots,x_n) - A| < \varepsilon.
 $$
 那么我们就说函数$f(x_1,\cdots,x_n)$当变量$x_1, \cdots, x_n$依次各趋于$a_1, \cdots,a_n$时以数$A$为极限. {\color{blue} 注意特殊指定聚点$M_0$是作用是保证了我们在选取$M_0$的邻域时交$\mathcal{M}$非空，从而有$x_1,\cdots,x_n$可以取}.
 \end{definition}
+
+\begin{definition}
+\rm {\color{red} 将聚点推广至一切坐标} 若在域$\mathcal{M}$中能找出一切坐标都可任意大的点，则点$(+\infty,\cdots,+\infty)$也是$\mathcal{M}$的聚点.
+\end{definition}
+
+那么自然地现在可以讨论$x_1,\cdots,x_n$都趋于无穷极限的情形.
+
+\begin{definition}
+假定函数$f(x_1,\cdots,x_n)$是在具有聚点$M_0(+\infty,\cdots,+\infty)$的某一点集$\mathcal{M}$内定义着. 若对于任意一数$\varepsilon > 0$都能找到一个$\delta >0$，只要
+$$
+x_1 > \delta, \cdots, x_n > \delta,
+$$
+就能使得
+$$
+|f(x_1,\cdots,x_n) - A| < \varepsilon.
+$$
+那么我们就说函数$f(x_1,\cdots,x_n)$当变量$x_1,\cdots,x_n$都趋于$+\infty$时以数$A$为极限.
+\end{definition}
+
 \end{document}
