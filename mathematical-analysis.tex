@@ -570,7 +570,7 @@ $$
 $$
 |f(x_1,\cdots,x_n) - A| < \varepsilon.
 $$
-那么我们就说函数$f(x_1,\cdots,x_n)$当变量$x_1, \cdots, x_n$依次各趋于$a_1, \cdots,a_n$时以数$A$为极限. {\color{blue} 注意特殊指定聚点$M_0$是作用是保证了我们在选取$M_0$的邻域时交$\mathcal{M}$非空，从而有$x_1,\cdots,x_n$可以取}.
+那么我们就说函数$f(x_1,\cdots,x_n)$当变量$x_1, \cdots, x_n$依次各趋于$a_1, \cdots,a_n$时以数$A$为极限，通常可以把$(x_1,\cdots,x_m)$记为$M$. {\color{blue} 注意特殊指定聚点$M_0$是作用是保证了我们在选取$M_0$的邻域时交$\mathcal{M}$非空，从而有$x_1,\cdots,x_n$可以取}.
 \end{definition}
 
 \begin{definition}
@@ -609,5 +609,97 @@ $$
 $$
 即落在中心为$M_0$半径为$r$的开球内，或者你也可以用长方形的邻域来重写.
 \end{definition}
+
+
+{\color{blue} 怎么感觉我又走到了拓扑上去了}...
+
+\begin{lemma}
+\rm 给定点集$\mathcal{M}$的一个聚点$M_0$，则可以从$\mathcal{M}$中选出异于$M_0$的点列$\{M_k\}$，它们收敛于极限点$M_0$
+\end{lemma}
+
+\begin{proof}
+从accumulation的definition就可以很快挑一组符合上述的点列出来.
+\end{proof}
+
+
+\begin{theorem}
+\rm {\color{red} (用点列的形式来刻画函数极限)} $\mathcal{M}$里面所有收敛于$M_0$的点列$\{M_k\}$，都有$\{f(M_k)\}$收敛于$A$当且仅当$\lim\limits_{M\rightarrow M_0}f(M)$收敛于$A$.
+\end{theorem}
+
+\begin{proof}
+($\Rightarrow$) 假设$\lim\limits_{M\rightarrow M_0}f(M)$不收敛于$A$，即存在某个$\varepsilon > 0$，找到不到$r > 0$满足对任意的$\overline{M'M_0} < r$，使得
+$$
+|f(M') - A| < \varepsilon.
+$$
+换句话存在对任意的$r > 0$，我们取序列$r_k \rightarrow 0$，都能找到一个$|\overline{M_k}-A| \geq \varepsilon$，实际上构造了一个收敛于$M_0$的点列$\{M_k\}$但是它并不收敛于$A$，这是和前提矛盾。
+
+($\Leftrightarrow$) 按照函数极限的定义给定一个$\varepsilon$对应某个$\delta$. 那么给定点列$\{M_k\}$收敛于$M_0$，那么在$k$充分大的，就有$\overline{M_kM_0} < r$，自然地也满足
+$$
+|f(M_k) - A| < \varepsilon,
+$$
+即$\{f(M_k)\}$收敛于$A$.
+\end{proof}
+
+{\color{blue} 下面我们来用一下这个定理}
+
+\begin{example}
+\rm 讨论极限:
+$$
+\lim\limits_{x \rightarrow 0 \atop y \rightarrow 0 } \frac{xy}{x^2+y^2}
+$$
+
+直接构造两个收敛到$0$的点列$\{M_k(\frac{1}{k}, \frac{1}{k})\}$和$\{M_k(\frac{2}{k}, \frac{1}{k})\}$，显然它们的对于一切$k$都有定值$\frac{1}{2}$和$\frac{2}{5}$.
+\end{example}
+
+\subsection{累次极限}
+
+前面在讨论多元函数极限的时候，都是自变量同时趋于各自的极限所得到的. 除此之外，还有一种极限，它是由各自变量以某种次序依次趋于各自极限而得到的.
+
+\begin{definition}
+\rm 为简单起见，以讨论二元函数$f(x,y)$为限. 假设变量$x,y$的变动趋于是这样的: $x$可以(与$y$无关)取数集$X$内的所有数值，$y$可以(与$x$无关)取数集$Y$内所有的数值. 其中$X$有一个不属于它的聚点$a$, $Y$有一个不属于它的聚点$b$. 若固定$Y$内任意一$y$，函数$f(x,y)$在$x \rightarrow a$时极限存在，则这极限，一般地说，与预先固定$y$值有关:
+$$
+\lim\limits_{x \rightarrow a} f(x,y) = \varphi(y).
+$$
+然后讨论函数$\varphi(y)$在$y \rightarrow b$时的极限:
+$$
+\lim\limits_{y \rightarrow b} \varphi(y) = \lim\limits_{y \rightarrow b}\lim\limits_{x \rightarrow a} f(x,y).
+$$
+特别低，我们称这个极限为{\color{red} 二重极限}. 若将上述自变量取极限次序交换，就可以得到另外一个二重极限.
+\end{definition}
+
+{\color{blue} 自然地，肯定会思考不同次序下的累次极限它们之间有什么关系呢}？
+
+\begin{example}
+\rm $$
+	f(x,y) = \frac{x-y + x^2 + y^2}{x + y},
+$$
+其中$x,y$都在$(0,+\infty)$上变动，并取accumulation $a,b$都为$0$. 那么
+$$
+\begin{array}{l}
+\varphi(y) = \lim\limits_{x \rightarrow 0} = y -1, \\
+\lim\limits_{y \rightarrow 0} \varphi(y) = -1.
+\end{array}
+$$
+再交换取极限的次序
+$$
+\begin{array}{l}
+\varphi(x) = \lim\limits_{y \rightarrow 0} = x+1, \\
+\lim\limits_{x \rightarrow 0} \varphi(x) = 1.
+\end{array}
+$$
+{\color{red} 这个结果告诉我们取极限次序不同，它们结果可能是不一样的}.
+\end{example}
+
+\begin{example}
+\rm 特别地
+$$
+f(x,y) = \frac{x\sin\frac{1}{x} + {y}}{x+y},~\text{或}~f(x,y)= x \cdot \sin\frac{1}{y}.
+$$
+它们$\lim\limits_{y \rightarrow 0}\lim\limits_{x \rightarrow 0}f$存在，而$\lim\limits_{x \rightarrow 0}\lim\limits_{y \rightarrow 0}f$不存在的情况. 甚至在后一种情况中$\lim\limits_{y \rightarrow 0}f$单侧极限就是不存在的.
+\end{example}
+
+\begin{theorem}
+
+\end{theorem}
 
 \end{document}
