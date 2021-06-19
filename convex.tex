@@ -1,0 +1,110 @@
+\documentclass{article}
+
+\usepackage{ctex}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{cd}
+\usetikzlibrary{decorations.pathreplacing}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{hyperref} %url
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\usepackage{enumitem}
+
+\usepackage[textwidth=18cm]{geometry} % 设置页宽=18
+
+\usepackage{blindtext}
+\usepackage{bm}
+\parindent=0pt
+\setlength{\parindent}{2em} 
+\usepackage{indentfirst}
+
+
+
+\usepackage{xcolor}
+\usepackage{titlesec}
+\titleformat{\section}[block]{\color{blue}\Large\bfseries\filcenter}{}{1em}{}
+\titleformat{\subsection}[hang]{\color{red}\Large\bfseries}{}{0em}{}
+%\setcounter{secnumdepth}{1} %section 序号
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{annotation}[theorem]{Annotation}
+
+\newcommand*{\xfunc}[4]{{#2}\colon{#3}{#1}{#4}}
+\newcommand*{\func}[3]{\xfunc{\to}{#1}{#2}{#3}}
+
+\newcommand\Set[2]{\{\,#1\mid#2\,\}} %集合
+\newcommand\SET[2]{\Set{#1}{\text{#2}}} %
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % 范数
+\newcommand{\vect}[1]{\mathbf{#1}} % vector
+
+\newcommand{\thereal}{\mathbf{R}} %实数 
+
+\begin{document}
+\title{凸函数的世界 \\ \small{{\color{red}凸分析}和{\color{red}凸优化}}}
+
+\author{枫聆}
+\maketitle
+\tableofcontents
+
+\newpage
+\section{数学优化问题}
+
+%the new world!
+\begin{definition}
+\rm {\color{red}数学优化}问题或者说{\color{red}优化问题}可以写成如下形式
+$$
+\begin{array}{ll}
+\text{minimize} & f_0(x) \\
+\text{subject to} & f_i(x) \leq b_i, \; i = 1,2,\cdots,m.
+\end{array}
+$$
+其中向量$x = (x_1,\cdots,x_n) \in \mathbf{R}^n$称为问题的{\color{red}优化变量}，函数$\func{f_0}{\mathbf{R}^n}{\mathbb{R}}$称为{\color{red}目标函数}，函数$\func{f_i}{\mathbf{R}^n}{\mathbb{R}}$被称为{\color{red}约束函数}，常数$b_i$称为{\color{red}约束上限}或者{\color{red}约束边界}.
+\end{definition}
+
+\begin{definition}
+\rm  那些满足约束的向量$z$，即使得上述不等式成立的向量，它们构成一个{\color{red}解集} $Z$. 这个解集中使得$f_0(z)$最小的那些$x^*$称为当前优化问题的{\color{red}最优解}，即
+$$
+\forall z \in Z, f_i(z) \leq b_i,\;i=1,2,\cdots,m~\text{and}~f(x^*) \leq f(z).
+$$
+\end{definition}
+
+\newpage
+\section{基本概念}
+
+\subsection{仿射集(affine set)}
+
+\begin{definition}
+\rm {\color{red} ($\thereal^n$上直线的定义）} 对任意两个$\thereal^n$中不同两个$\mathbf{x}$和$\mathbf{y}$，形如
+$$
+\mathbf{x} + \lambda(\mathbf{y}-\mathbf{x}) = (1-\lambda)\mathbf{x} + \lambda\mathbf{y},\; \lambda \in \thereal  
+$$
+的点集被称为过$\mathbf{x}$和$\mathbf{y}$的直线.
+\end{definition}
+
+\begin{definition}
+\rm 对于$\thereal^n$中的子集$M$，如果对于任意的$\vect{x},\vect{y} \in M$和$\lambda \in \thereal$都有$(1-\lambda)\vect{x} + \lambda\vect{y} \in M$，则称$M$为$\thereal^n$中的{\color{red}仿射集}(affine set). 相关书与仿射集同义的名词有{\color{red}仿射流形
+}(affine manifold)，{\color{red}仿射变量}(affine variety)，{\color{red}线性变量}(linear variety)或者{\color{red}flat}(平坦的).
+\end{definition}
+
+
+\end{document}
