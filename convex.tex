@@ -139,5 +139,42 @@ $$
 则称$M$和$L$ {\color{red}平行}.
 \end{definition}
 
+\begin{proposition}
+\rm 仿射集的平移仍为仿射集.
+\end{proposition}
+
+\begin{proof}
+给定仿射集$M$和它的平移$M + \vect{a}$，取任意的$\vect{x},\vect{y} \in M$，那么
+$$
+(1-\lambda)(\vect{x} + \vect{a})+\lambda(\vect{y}+\vect{a}) = (1-\lambda)\vect{x} + \lambda\vect{y} + \vect{a} \in  M + \vect{a}.
+$$
+\end{proof}
+
+\begin{proposition}
+\rm 仿射集的平行是一种{\color{red}等价关系}.
+\end{proposition}
+
+\begin{proof}
+自反性，取$\vect{a} \in M$即得；对称性，若$M = L + \vect{a}$，则$L = M + (-\vect{a})$；传递性, 若$M = L + \vect{a},L = L_1 + \vect{b}$，则$M = L_1 + (\vect{a}+\vect{b})$.
+\end{proof}
+
+\begin{theorem}
+\rm 每个非空仿射集$M$一定平行于唯一的子空间$L$.这个$L$由
+$$
+L = M-M = \Set{\vect{x}-\vect{y}}{\vect{x},\vect{y} \in M}.
+$$
+给定.
+\end{theorem}
+
+\begin{proof}
+先证{\color{blue}唯一}，假设$M$同时平行于两个子空间$L_1,L_2$，我们前面已经证明平行是一个等价关系，因此存在$\vect{a}$使得$L_1 = L_2 + \vect{a}$，由于$\vect{0} \in L_1$，所以$\vect{-a} \in L_2$，所以$\vect{a} \in L_2$, 那么$L_1 = L_2$(相当于往子空间里面在扔一个它自己的元素进去，并不会改变这个子空间). 
+
+现在我们要{\color{blue}找到这样一个子空间}，根据前面的定理知道含$\vert{0}$的仿射集才是子空间，很明显使得$\vect{a} \in M$，那么$\vect{0} \in M-\vect{a}$. 这样的$\vect{a}$是任意的，并且所有仿射$M+\vect{a}$都是相同的，所以这样所以$L =\sum_{a \in M} M-a = M-M$.
+\end{proof}
+
+\begin{definition}
+\rm 与非空仿射集平行的子空间的维数称为这个仿射集的{\color{red}维数}. 维数为$0$，$1$和$2$分别称为点，线，面. $\thereal^n$中$(n-1)$维仿射集被称为{\color{red}超平面}(hyperplane).
+\end{definition}
+
 
 \end{document}
