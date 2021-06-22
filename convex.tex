@@ -94,7 +94,7 @@ $$
 \subsection{仿射集(affine set)}
 
 \begin{definition}
-\rm {\color{red} ($\thereal^n$上直线的定义）} 对任意两个$\thereal^n$中不同两个$\mathbf{x}$和$\mathbf{y}$，形如
+\rm {\color{red} ($\thereal^n$($n$维实数向量空间)上直线的定义）} 对任意两个$\thereal^n$中不同两个$\mathbf{x}$和$\mathbf{y}$，形如
 $$
 \mathbf{x} + \lambda(\mathbf{y}-\mathbf{x}) = (1-\lambda)\mathbf{x} + \lambda\mathbf{y},\; \lambda \in \thereal  
 $$
@@ -104,6 +104,39 @@ $$
 \begin{definition}
 \rm 对于$\thereal^n$中的子集$M$，如果对于任意的$\vect{x},\vect{y} \in M$和$\lambda \in \thereal$都有$(1-\lambda)\vect{x} + \lambda\vect{y} \in M$，则称$M$为$\thereal^n$中的{\color{red}仿射集}(affine set). 相关书与仿射集同义的名词有{\color{red}仿射流形
 }(affine manifold)，{\color{red}仿射变量}(affine variety)，{\color{red}线性变量}(linear variety)或者{\color{red}flat}(平坦的).
+\end{definition}
+
+\begin{theorem}
+\rm $\thereal^n$上的所有子空间都是仿射集. 反过来含$\vect{0}$的仿射集都是子空间.
+\end{theorem}
+
+\begin{proof}
+\rm 由向量空间子空间的定义，给定任意的子空间$V$，在{\color{red}scalar multiplication}和{\color{red} vector addition}下封闭的，自然也满足仿射集的定义. 
+
+相反，若给定一个仿射集$M$，有$\vect{0} \in M$，因此
+$$
+\forall \vect{x} \in M, \lambda x = (1-\lambda)\vect{0} + \lambda \vect{x} \in M,
+$$
+这就证明了{\color{red}scalar multiplication}. 对任意的$\forall \vect{x},\vect{y} \in M$，有
+$$
+\vect{x}+\vect{y} = 2(\frac{1}{2} \vect{x} + \frac{1}{2} \vect{y}) \in M.
+$$
+即证明了{\color{red} vector addition}.
+\end{proof}
+
+\begin{definition}
+\rm 对于$M \subseteq \thereal^n$及$\vect{a} \in M$. $M$关于$\vect{a}$的{\color{red}平移}(translate)定义为
+$$
+M + \vect{a} = \Set{\vect{x}+\vect{a}}{\vect{x} \in M}.
+$$
+\end{definition}
+
+\begin{definition}
+\rm 给定仿射集$M$和仿射集$L$，若可以找到一个$\vect{a}$使得满足关系
+$$
+M = L + \vect{a},
+$$
+则称$M$和$L$ {\color{red}平行}.
 \end{definition}
 
 
