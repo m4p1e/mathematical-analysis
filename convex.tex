@@ -58,6 +58,7 @@
 \newcommand{\vect}[1]{\mathbf{#1}} % vector
 
 \newcommand{\thereal}{\mathbf{R}} %实数 
+\newcommand{\inprod}[2]{\left<#1,#2\right>} % inner product
 
 \begin{document}
 \title{凸函数的世界 \\ \small{{\color{red}凸分析}和{\color{red}凸优化}}}
@@ -175,6 +176,41 @@ $$
 \begin{definition}
 \rm 与非空仿射集平行的子空间的维数称为这个仿射集的{\color{red}维数}. 维数为$0$，$1$和$2$分别称为点，线，面. $\thereal^n$中$(n-1)$维仿射集被称为{\color{red}超平面}(hyperplane).
 \end{definition}
+
+\begin{definition}
+\rm 给定$\thereal^n$上子空间$L$，对于任意$\vect{y} \in L$，使得关系
+$$
+\inprod{\vect{x}}{\vect{y}} = 0
+$$
+成立的$x \in \thereal^n$构成的集合称为$L$的{\color{red}正交补}(orthogonal complement)，记为$L^\perp$. 显然$L^\perp$也是一个子空间，且满足
+$$
+\dim L + \dim L^\perp = n.
+$$
+\end{definition}
+
+\begin{definition}
+\rm {\color{red} (建立在正交性理论上平行于超平面仿射集表示方法)} 若一维子空间是有当个单个非零向量$\vect{b}$构成，那么其对应的正交$n-1$维子空间可以表示为$\Set{\vect{x} \in \thereal^n}{\vect{x} \perp \vect{b}}$. 自然地，与其平行的仿射集为
+$$
+\begin{array}{ll}
+\Set{\vect{x} \in \thereal^n}{\vect{x} \perp \vect{b}} + \vect{a} &= \Set{\vect{x}+\vect{a}}{\inprod{\vect{x}}{\vect{b}}=0~\text{and}~\vect{x} \in \thereal^{n}} \\
+&= \Set{\vect{y} \in \thereal^{n}}{\inprod{\vect{y}-\vect{a}}{\vect{b}}=0} \\
+&= \Set{\vect{y} \in \thereal^{n}}{\inprod{\vect{y}}{\vect{b}}=\beta} 
+\end{array},
+$$
+其中$\beta = \inprod{\vect{a}}{\vect{b}}$.
+\end{definition}
+
+\begin{theorem}
+\rm 给定$\beta \in \thereal$以及非零$\vect{b} \in \thereal$，集合
+$$
+H = \Set{\vect{x} \in \thereal^n}{\inprod{\vect{x}}{\vect{b}}=\beta}
+$$
+为$\thereal^n$的超平面. 
+\end{theorem}
+
+\begin{proof}
+研究一下同一$\beta$，得到的$\vect{a}$的关系.
+\end{proof}
 
 
 \end{document}
